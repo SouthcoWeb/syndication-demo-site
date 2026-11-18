@@ -10,8 +10,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const catalog = await getCatalog();
   const base = siteConfig.url;
   return [
-    { url: `${base}/`, changeFrequency: "weekly", priority: 1 },
-    { url: `${base}/catalog`, changeFrequency: "weekly", priority: 0.9 },
+    // "/" only redirects to /catalog, so the listing is the entry point.
+    { url: `${base}/catalog`, changeFrequency: "weekly", priority: 1 },
     ...Array.from(catalog.nodes.values()).map((node) => ({
       url: `${base}${node.href}`,
       changeFrequency: "weekly" as const,

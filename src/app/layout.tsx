@@ -24,6 +24,8 @@ export const metadata: Metadata = {
     url: "/",
   },
   twitter: { card: "summary_large_image" },
+  // Demo site with the same products as the enhanced website: keep it out of search results.
+  robots: { index: false, follow: false },
 };
 
 export const viewport: Viewport = {

@@ -4,7 +4,7 @@ import { SheetIcon, UploadIcon } from "./ui/icons";
 import { Container } from "./ui/primitives";
 
 const STEPS = [
-  { title: "Export from inRiver", text: "Export the products you want to show to an Excel file — images, videos, specifications and related parts included." },
+  { title: "Export from inRiver", text: "Export the products you want to show to an Excel file from inRiver." },
   { title: "Import and map", text: "Upload the file on the import page. Columns are matched automatically and you can adjust any of them." },
   { title: "Publish", text: "Check the preview and publish. The website shows exactly the products in your file." },
 ];
@@ -22,7 +22,7 @@ export function EmptyCatalog() {
           Your catalog is ready for its first products
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-pretty text-[17px] leading-relaxed text-muted-foreground">
-          Import the Excel export from inRiver to publish your products with images, videos, specifications, related and compatible parts.
+          Import the Excel export from inRiver to publish your products with their basic product information.
         </p>
         <div className="mt-8 flex justify-center">
           <Link href="/admin" className={buttonVariants({ size: "lg" })}>
