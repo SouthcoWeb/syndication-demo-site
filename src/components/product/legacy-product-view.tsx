@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { legacyConfig } from "@/config/legacy";
 import { siteConfig } from "@/config/site";
 import type { ProductPageData } from "@/lib/catalog-core";
+import { downloadHref } from "@/lib/download";
 import { familyLabel } from "@/lib/format";
 import { productHref } from "@/lib/product";
 import { attributeGroups, importedAttributeCount, type AttributeGroup } from "@/lib/product-attributes";
@@ -143,7 +144,7 @@ export function LegacyProductView({ data, full }: { data: ProductPageData; full:
                     </a>
                     {drawing && (
                       <a
-                        href={drawing.url}
+                        href={downloadHref(product.slug, 0)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 border bg-card px-4 py-2 text-sm font-bold text-foreground hover:bg-muted"
@@ -162,7 +163,7 @@ export function LegacyProductView({ data, full }: { data: ProductPageData; full:
 
             {product.documents.length > 0 && (
               <Section id="downloads" title="Downloads">
-                <DocumentList documents={product.documents} />
+                <DocumentList documents={product.documents} slug={product.slug} />
               </Section>
             )}
           </Container>

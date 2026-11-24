@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import type { DocumentType, ProductDocument } from "@/lib/types";
 import { BadgeCheckIcon, BookIcon, ChartIcon, CubeIcon, ExternalLinkIcon, FileDownIcon, FileTextIcon } from "../ui/icons";
+import { downloadHref } from "@/lib/download";
 
 const ICONS: Record<DocumentType, ReactNode> = {
   cad: <CubeIcon size={20} />,
@@ -26,7 +27,8 @@ const GROUPS: Array<{ title: string; types: DocumentType[] }> = [
   { title: "Compliance", types: ["certificate"] },
 ];
 
-export function DocumentList({ documents }: { documents: ProductDocument[] }) {
+/** Links go through the password-protected download route, never straight to the file. */
+export function DocumentList({ documents, slug }: { documents: ProductDocument[]; slug: string }) {
   return (
     <div className="grid gap-8 lg:grid-cols-3">
       {GROUPS.map((group) => {
@@ -37,9 +39,9 @@ export function DocumentList({ documents }: { documents: ProductDocument[] }) {
             <h3 className="text-sm font-semibold text-foreground">{group.title}</h3>
             <ul className="mt-3 space-y-2">
               {docs.map((doc) => (
-                <li key={doc.url} id={`doc-${documents.indexOf(doc)}`} className="scroll-mt-[calc(var(--header-height)+80px)] rounded-2xl">
+                <li key={documents.indexOf(doc)} id={`doc-${documents.indexOf(doc)}`} className="scroll-mt-[calc(var(--header-height)+80px)] rounded-2xl">
                   <a
-                    href={doc.url}
+                    href={downloadHref(slug, documents.indexOf(doc))}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center gap-3.5 rounded-2xl border bg-card p-3.5 transition-[border-color,box-shadow] hover:border-foreground/20 hover:shadow-[0_14px_30px_-24px_rgb(15_23_42/0.45)]"

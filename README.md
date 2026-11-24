@@ -74,6 +74,7 @@ Requirements: **Node.js 20.9 or newer**.
 | `/catalog`, `/catalog/<category>` | Product listing (PLP) with filters |
 | `/product/<slug>` | Product page (PDP) with the From inRiver navigator |
 | `/admin` | Excel import (upload → map columns → review → publish) |
+| `/download?product=…&doc=…` | Presenter password page shown instead of a document |
 
 Product URLs match the enhanced website, so `/product/<slug>` opens the same part on both sites.
 
@@ -83,6 +84,7 @@ Product URLs match the enhanced website, so `/product/<slug>` opens the same par
 | --- | --- |
 | `ADMIN_PASSWORD` | **Required** to use `/admin`. |
 | `NEXT_PUBLIC_ENHANCED_URL` | Enhanced website linked from product pages. |
+| `DOWNLOAD_PASSWORD` | Password the presenter enters to open documents. Without it nobody can download; visitors see a "demo website" page pointing to southco.com. |
 | `SESSION_SECRET` | Optional extra secret for admin sessions. |
 | `BLOB_READ_WRITE_TOKEN` | Added by Vercel when a Blob store is connected. |
 | `BLOB_ACCESS` | `private` (default) or `public`. |
